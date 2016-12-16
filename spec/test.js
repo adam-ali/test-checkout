@@ -16,7 +16,7 @@ describe('calculation functions', () => {
     assert.deepEqual(actual, expected);
   });
 
-  it('reducer works for new product with quantity 2', () => {
+  it('works for new product with quantity 2', () => {
     const actual = [];
     calculate.selectProduct(apple, actual);
     calculate.selectProduct(apple, actual);
@@ -26,7 +26,7 @@ describe('calculation functions', () => {
     assert.deepEqual(actual, expected);
   });
 
-  it('reducer should give normal price when 1 Asparagus is  selected', () => {
+  it('should give normal price when 1 Asparagus is  selected', () => {
     const actual = [];
     calculate.selectProduct(asparagus, actual);
     var ordersArray = {id: 'G95', name: 'Asparagus', quantity: 1, price: 1.20, totalPrice: '1.20'};
@@ -35,7 +35,7 @@ describe('calculation functions', () => {
     assert.deepEqual(actual, expected);
   });
 
-  it('reducer should give one free when 2 Asparagus are  selected', () => {
+  it('should give one free when 2 Asparagus are  selected', () => {
     const actual = [];
     calculate.selectProduct(asparagus, actual);
     calculate.selectProduct(asparagus, actual);
@@ -45,7 +45,7 @@ describe('calculation functions', () => {
     assert.deepEqual(actual, expected);
   });
 
-  it('reducer should give one free when 3 Asparagus are  selected', () => {
+  it('should give one free when 3 Asparagus are  selected', () => {
     const actual = [];
     calculate.selectProduct(asparagus, actual);
     calculate.selectProduct(asparagus, actual);
@@ -55,7 +55,7 @@ describe('calculation functions', () => {
 
     assert.deepEqual(actual, expected);
   });
-  it('reducer should add 3 different items to the state when they are  selected', () => {
+  it('should add 3 different items to the state when they are  selected', () => {
     const actual = [];
     calculate.selectProduct(apple, actual);
     calculate.selectProduct(banana, actual);
@@ -68,13 +68,52 @@ describe('calculation functions', () => {
 
     assert.deepEqual(actual, expected);
   });
-  it('reducer should add 2 different items to the state when 3 items are selected but one is selected twice', () => {
+  it('should add 2 different items to the state when 3 items are selected but one is selected twice', () => {
     const actual = [];
     calculate.selectProduct(apple, actual);
     calculate.selectProduct(banana, actual);
     var ordersArray1 = {id: 'a1', name: 'apple', price: 1.20, quantity: 1, totalPrice: '1.20'};
     var ordersArray2 = {id: 'G94', name: 'banana', price: 0.20, quantity: 1, totalPrice: '0.20'};
     const expected = [ordersArray1, ordersArray2];
+
+    assert.deepEqual(actual, expected);
+  });
+
+  it('subtotal function should work', () => {
+    const orderList = [];
+    calculate.selectProduct(apple, orderList);
+    calculate.selectProduct(banana, orderList);
+    const actual = calculate.subtotal(orderList);
+    const expected = '1.40';
+
+    assert.deepEqual(actual, expected);
+  });
+  it('total function should give 20% discount when subtotal is above £10', () => {
+    const orderList = [];
+    calculate.selectProduct(apple, orderList);
+    calculate.selectProduct(melon, orderList);
+    calculate.selectProduct(melon, orderList);
+    const actual = calculate.total(orderList);
+    const expected = '9.28';
+
+    assert.deepEqual(actual, expected);
+  });
+  it('total function shouldnt give 20% discount when subtotal is under £10', () => {
+    const orderList = [];
+    calculate.selectProduct(apple, orderList);
+    calculate.selectProduct(melon, orderList);
+    const actual = calculate.total(orderList);
+    const expected = '6.40';
+
+    assert.deepEqual(actual, expected);
+  });
+  it('subtotal function shouldnt give 20% discount when over £10', () => {
+    const orderList = [];
+    calculate.selectProduct(apple, orderList);
+    calculate.selectProduct(melon, orderList);
+    calculate.selectProduct(melon, orderList);
+    const actual = calculate.subtotal(orderList);
+    const expected = '11.60';
 
     assert.deepEqual(actual, expected);
   });

@@ -22,7 +22,7 @@ class OrderComponent extends Component {
     }
     if (subtotal > 10) {
       this.setState({
-        discountNote: '• 20% discount when you send more than £10',
+        discountNote: '• 20% discount when you send more than £10.00',
         total: total,
         subtotal: subtotal
       });
