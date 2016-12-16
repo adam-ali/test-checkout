@@ -5,7 +5,9 @@
   background: indianred;
   color: white;
 }
-
+.Product:hover {
+  background: darkred;
+}
 .Product-name {
   font-weight: bold;
 }

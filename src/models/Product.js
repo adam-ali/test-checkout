@@ -4,13 +4,13 @@ class Product {
    * @param {string} name - user-facing name
    * @param {number} price - represented as an integer of pennies
    */
-  constructor(code, name, price) {
+  constructor (code, name, price) {
     this.code = code;
     this.name = name;
     this.price = price;
   }
 
-  getFormattedPrice() {
+  getFormattedPrice () {
     return (this.price / 100).toFixed(2);
   }
 }
