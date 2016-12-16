@@ -5,7 +5,51 @@
   width: 40%;
   max-width: 600px;
 }
-
+.right{
+  text-align: right;
+  padding-right: 15px;
+}
+th{
+  text-align: center;
+}
+.priceWithoutDiscount{
+  display: block;
+}
+.titles th{
+  font-size: 25px;
+  border: 4px;
+}
+.total{
+  font-size: 27px;
+}
+.bill{
+  border-bottom: 2px solid;
+}
+.row{
+  margin-right: 0;
+  margin-left: 0;
+}
 .Order-title {
   margin-top: 0;
+}
+.left{
+  text-align: left;
+}
+
+.offer{
+  display: block;
+  font-style: italic;
+  color: #000088;
+}
+.orderList {
+  border: 1px solid;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8em 1em;
+  background: whitesmoke;
+  color: black;
+}
+.orderList:hover {
+  background: lightgrey;
 }
