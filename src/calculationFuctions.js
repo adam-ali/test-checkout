@@ -43,7 +43,7 @@ export function total (array) {
   var Subtotal = subtotal(array);
   var total;
   if (Subtotal > 10) {
-    total = Math.round((Subtotal - ((20 / 100) * Subtotal)) * 100) / 100;
+    total = Subtotal * 0.8;
     total = total.toFixed(2);
     return total;
   }
@@ -52,3 +52,5 @@ export function total (array) {
 export function containsAsparagus (element) {
   if (element.id === 'G95' && element.quantity > 1) { return true; }
 }
+
+
