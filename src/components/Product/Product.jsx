@@ -6,16 +6,9 @@ var ordersList = [];
 
 class ProductComponent extends Component {
   sendOrderData () {
-    var orderObj;
-    if (this.props.product.code === 'G95') {
-      orderObj = {id: this.props.product.code, name: this.props.product.name, price: this.props.product.getFormattedPrice(), offer: 'Buy 1 get 1 free'};
-    } else {
-      orderObj = {id: this.props.product.code, name: this.props.product.name, price: this.props.product.getFormattedPrice()};
-    }
-
+    var orderObj = {id: this.props.product.code, name: this.props.product.name, price: this.props.product.getFormattedPrice()};
     calculate.selectProduct(orderObj, ordersList);
     this.props.callOrder(ordersList);
-    console.log(ordersList);
   }
   render () {
     return (

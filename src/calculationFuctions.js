@@ -31,3 +31,24 @@ export function selectProduct (obj, list) {
 function isOdd (n) {
   return Math.abs(n % 2) === 1;
 }
+export function subtotal (array) {
+  var subtotalValue = 0;
+  for (var i = 0; i < array.length; i++) {
+    subtotalValue += +array[i].totalPrice;
+  }
+  subtotalValue = subtotalValue.toFixed(2);
+  return subtotalValue;
+}
+export function total (array) {
+  var Subtotal = subtotal(array);
+  var total;
+  if (Subtotal > 10) {
+    total = Math.round((Subtotal - ((20 / 100) * Subtotal)) * 100) / 100;
+    total = total.toFixed(2);
+    return total;
+  }
+  return Subtotal;
+}
+export function containsAsparagus (element) {
+  if (element.id === 'G95' && element.quantity > 1) { return true; }
+}
